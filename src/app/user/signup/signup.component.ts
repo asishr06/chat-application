@@ -72,7 +72,7 @@ export class SignupComponent implements OnInit {
 
       console.log(apiResponse);
 
-      if(apiResponse.status === 2000)
+      if(apiResponse.status === 200)
       {
         this.toastr.success('Signup successful');
       setTimeout( () => {
