@@ -11,6 +11,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AppService } from './app.service';
+import { SignupComponent } from './user/signup/signup.component';
 
 
 @NgModule({
@@ -27,13 +29,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ToastrModule.forRoot(),
     RouterModule .forRoot([
       {path:'login',component: LoginComponent,pathMatch:'full'},
+      {path:'signup',component:SignupComponent,pathMatch:'full'},
       {path :'',redirectTo:'login',pathMatch:'full'},
       {path:'*',component:LoginComponent},
       {path:'**',component:LoginComponent}
 
     ])
   ],
-  providers: [],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

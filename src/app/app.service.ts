@@ -26,7 +26,7 @@ export class AppService {
     .set('email',data.email)
     .set('mobileNumber',data.mobileNumber)
     .set('password',data.password)
-    .set('apikey',data.apikey);
+    .set('apiKey',data.apiKey);
 
 
     return this.http.post(`${this.url}/api/v1/users/signup`,params);
