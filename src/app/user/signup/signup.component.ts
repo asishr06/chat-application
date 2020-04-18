@@ -52,6 +52,8 @@ export class SignupComponent implements OnInit {
       
       this.toastr.warning('enter the password');
     
+    }else if(!this.email){
+      this.toastr.warning('enter email id');
     }else if (!this.apiKey){
 
       this.toastr.warning('enter the apiKey');

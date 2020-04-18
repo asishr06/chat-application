@@ -18,13 +18,24 @@ export class AppService {
 
   constructor(public http:HttpClient) { }
 
+
+  public getUserInfoFromLocalStorage = () =>{
+
+    return JSON.parse(localStorage.getItem('userInfo'));
+  }
+
+  public setUserInfoInLocalStorage = (data) =>{
+    localStorage.setItem('userInfo',JSON.stringify(data));
+  }
+
+
   public signupFunction(data):Observable<any>{
 
     const params= new HttpParams()
     .set('firstName',data.firstName)
     .set('lastName',data.lastName)
     .set('email',data.email)
-    .set('mobileNumber',data.mobileNumber)
+    .set('mobileNumber',data.mobile)
     .set('password',data.password)
     .set('apiKey',data.apiKey);
 
@@ -40,7 +51,7 @@ public signinFunction(data):Observable<any>{
   .set('password',data.password);
 
 
-  return this.http.post(`${this.url}/api/v1/users/signin`,params);
+  return this.http.post(`${this.url}/api/v1/users/login`,params);
 
 
 }//end of signin function
@@ -51,13 +62,15 @@ private  handleError(err:HttpErrorResponse){
   let errorMessage ="";
 
   if(err.error instanceof Error)
+  {
   errorMessage =`An error occured :${err.error.message}`;
+  }else{
+  errorMessage =`server returned code : ${err.status},error message is :${err.message}`;
+  }
   console.log("handle error with http");
   console.log(err.message);
   return Observable.throw(err.message);
 }
-
-
 
 
 }

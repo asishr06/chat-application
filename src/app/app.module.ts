@@ -39,4 +39,5 @@ import { SignupComponent } from './user/signup/signup.component';
   providers: [AppService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+ }
